@@ -9,8 +9,8 @@ services:
     image: misp:latest
     restart: unless-stopped
     ports:
-      - "80:80"
-      - "443:443"
+      - "1180:80"
+      - "11443:443"
     volumes:
       - /dev/urandom:/dev/random
       - ${DATA_DIR:-./data}/web:/var/www/MISP
