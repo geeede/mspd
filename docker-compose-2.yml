@@ -13,7 +13,7 @@ services:
       - "11443:443"
     volumes:
       - /dev/urandom:/dev/random
-      - ${DATA_DIR:-./data}/web:/var/www/MISP
+      - misp_web_vol:/var/www/MISP
     environment:
       - MYSQL_HOST=${MYSQL_HOST:-misp_db}
       - MYSQL_DATABASE=${MYSQL_DATABASE:-misp}
@@ -32,7 +32,7 @@ services:
     hostname: ${MYSQL_HOST:-misp_db}
     restart: unless-stopped
     volumes:
-      - ${DATA_DIR:-./data}/db:/var/lib/mysql
+      - misp_db_vol:/var/lib/mysql
     environment:
       - MYSQL_DATABASE=${MYSQL_DATABASE:-misp}
       - MYSQL_USER=${MYSQL_USER:-misp}
@@ -42,3 +42,6 @@ services:
 volumes:
   web:
   db:
+  misp_db_vol:
+  misp_web_vol:
+  
